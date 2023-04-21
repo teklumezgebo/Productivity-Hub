@@ -2,22 +2,22 @@ import React from "react";
 
 function TaskForm({ taskName, dueDate, onListChange, onTaskNameChange, onDueDateChange }) {
     
- const newTask = {
-  task: taskName,
-  due: dueDate
- }
+  const newTask = {
+   task: taskName,
+   due: dueDate
+  }
 
- const postedTaskObj = {
-   method: 'POST',
-   headers: {'Content-Type': 'application/json'},
-   body: JSON.stringify(newTask)    
- }
+   const postedTaskObj = {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(newTask)    
+  }
 
- function handleFormSubmit() {
-    fetch('http://localhost:3000/tasks', postedTaskObj)
-    .then(res => res.json())
-    .then(task => onListChange(task))
- }
+  function handleFormSubmit() {
+     fetch('http://localhost:3000/tasks', postedTaskObj)
+     .then(res => res.json())
+     .then(task => onListChange(task))
+  }
     
   return (
     <div>
@@ -29,6 +29,7 @@ function TaskForm({ taskName, dueDate, onListChange, onTaskNameChange, onDueDate
                 <option>High Priority</option>
                 <option>Low Priority</option>
             </select>
+            <input type="submit"></input>
         </form>
     </div>
     )
