@@ -4,7 +4,7 @@ import TaskForm from "./TaskForm";
 import TaskList from "./TaskList";
 
 function App() {
-  const [list, setList] = useState([])
+  const [list, setList] = useState('')
   const [taskName, setTaskName] = useState('')
   const [dueDate, setDueDate] = useState('')
 
@@ -21,10 +21,11 @@ function App() {
   }
 
   function filterList(id) {
-    const filteredList = list.filter((task) => task.props.id !== id)
-    console.log(filteredList)
+    const filteredList = list.filter((task) => parseInt(task.key) !== id)
     setList(filteredList)
   }
+
+  console.log(list)
 
   function handleDelete(id) {
     fetch(`http://localhost:3000/tasks/${id}`, {
