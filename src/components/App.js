@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import NavBar from "./NavBar";
 import TaskForm from "./TaskForm";
 import TaskList from "./TaskList";
+import Task from './Task';
 
 function App() {
   const [list, setList] = useState([])
@@ -25,8 +26,22 @@ function App() {
   }
 
   function filterList(id) {
-    const filteredList = list.filter((task) => task.props.id !== id)
-    setList(filteredList)
+    fetch('http://localhost:3000/tasks')
+    .then(res => res.json())
+    .then(tasks => {
+      const filteredList = tasks.filter((task) => task.id !== id)
+      const displayFilteredList = filteredList.map((task) => {
+        return (<Task 
+          key={task.id} 
+          id={task.id} 
+          task={task.task} 
+          dueDate={task.due} 
+          onDelete={handleDelete}
+          />)
+      })
+      setList(displayFilteredList)
+    })
+
   }
 
   function handleDelete(id) {
@@ -36,8 +51,6 @@ function App() {
     .then(res => res.json())
     .then(() => filterList(id))
   }
-
-  console.log(list)
 
   return (
     <div>

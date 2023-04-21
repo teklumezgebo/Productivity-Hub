@@ -8,7 +8,13 @@ function TaskList({ list, onListChange, onDelete }) {
         .then(res => res.json())
         .then(tasks => {
             const displayTask = tasks.map((task) => {
-                return (<Task key={task.id} id={task.id} task={task.task} dueDate={task.due} onDelete={onDelete}/>)
+                return (<Task 
+                    key={task.id} 
+                    id={task.id} 
+                    task={task.task} 
+                    dueDate={task.due} 
+                    onDelete={onDelete}
+                    />)
             })
             onListChange(displayTask)
         })
