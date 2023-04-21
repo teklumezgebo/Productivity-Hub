@@ -19,11 +19,8 @@ function TaskForm({ taskName, dueDate, onListChange, onTaskNameChange, onDueDate
     fetch('http://localhost:3000/tasks', postedTaskObj)
      .then(res => res.json())
      .then(task => {
-        console.log(task)
-        const displayTask = Object.values(task).map(() => {
-            return (<Task id={task[3]} key={task[2]} task={task[0]} dueDate={task[1]} onDelete={onDelete}/>)
-        })
-        onListChange(displayTask)
+        const displayedTask = (<Task id={task.id} key={task.id} task={task.task} dueDate={task.due} onDelete={onDelete}/>)
+        onListChange(displayedTask)
      })
   }
     

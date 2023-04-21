@@ -22,6 +22,7 @@ function App() {
 
   function filterList(id) {
     const filteredList = list.filter((task) => task.props.id !== id)
+    console.log(filteredList)
     setList(filteredList)
   }
 
