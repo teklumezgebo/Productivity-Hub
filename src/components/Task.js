@@ -1,9 +1,10 @@
 import React from "react";
 
-function Task({ name, dueDate }) {
+function Task({ task, dueDate }) {
     return (
         <div>
-            <p>{name} Due: {dueDate}</p>
+            <h3>{task} Due: {dueDate}</h3>
+            <button>x</button>
         </div>
     )
 }

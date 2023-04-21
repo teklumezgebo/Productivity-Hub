@@ -24,8 +24,8 @@ function App() {
     <div>
       <NavBar />
       <br></br>
-      <TaskForm taskName={taskName} dueDate={dueDate} onListChange={handleListChange} onTaskNameChange={handleTaskNameChange} onDueDateChange={handleDueDateChange}/>
-      <TaskList list={list}/>
+      <TaskForm taskName={taskName} dueDate={dueDate}  onListChange={handleListChange} onTaskNameChange={handleTaskNameChange} onDueDateChange={handleDueDateChange}/>
+      <TaskList list={list} onListChange={handleListChange}/>
     </div>
   )
 }

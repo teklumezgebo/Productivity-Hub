@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Task from "./Task";
 
-function TaskList({ list }) {
+function TaskList({ list, onListChange }) {
+    
+    useEffect(() => {
+        fetch('http://localhost:3000/tasks')
+        .then(res => res.json())
+        .then(tasks => {
+            const displayTask = tasks.map((task) => {
+                return (<Task key={task.id} id={task.id} task={task.task} dueDate={task.due}/>)
+            })
+            onListChange(displayTask)
+        })
+    }, [])
+
+    
+
     return (
         <div>
             {list}
