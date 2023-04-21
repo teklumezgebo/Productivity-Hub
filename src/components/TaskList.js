@@ -10,6 +10,7 @@ function TaskList({ list, onListChange, onDelete }) {
             const displayTask = tasks.map((task) => {
                 return (<Task key={task.id} id={task.id} task={task.task} dueDate={task.due} onDelete={onDelete}/>)
             })
+            console.log(displayTask)
             onListChange(displayTask)
         })
     }, [])

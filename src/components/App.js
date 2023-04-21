@@ -9,7 +9,7 @@ function App() {
   const [dueDate, setDueDate] = useState('')
 
   function handleListChange(newTask) {
-    setList(() => [...list, newTask])
+    setList(newTask)
   }
 
   function handleTaskNameChange(event) {
@@ -21,11 +21,9 @@ function App() {
   }
 
   function filterList(id) {
-    const filteredList = list.filter((task) => parseInt(task.key) !== id)
-    setList(filteredList)
+    const filteredList = list.filter((task) => task.props.id !== id)
+    setList(() => [...list, filteredList])
   }
-
-  console.log(list)
 
   function handleDelete(id) {
     fetch(`http://localhost:3000/tasks/${id}`, {
@@ -34,6 +32,7 @@ function App() {
     .then(res => res.json())
     .then(() => filterList(id))
   }
+
 
   return (
     <div>
