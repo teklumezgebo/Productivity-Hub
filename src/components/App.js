@@ -26,7 +26,7 @@ function App() {
 
   function filterList(id) {
     const filteredList = list.filter((task) => task.props.id !== id)
-    setList(() => [...list, filteredList])
+    setList(filteredList)
   }
 
   function handleDelete(id) {
@@ -36,6 +36,8 @@ function App() {
     .then(res => res.json())
     .then(() => filterList(id))
   }
+
+  console.log(list)
 
   return (
     <div>
