@@ -1,7 +1,7 @@
 import React from "react";
 import Task from "./Task";
 
-function TaskForm({ taskName, dueDate, onListChange, onTaskNameChange, onDueDateChange, onDelete }) {
+function TaskForm({ taskName, dueDate, onNewTask, onTaskNameChange, onDueDateChange, onDelete }) {
     
   const newTask = {
    task: taskName,
@@ -20,7 +20,7 @@ function TaskForm({ taskName, dueDate, onListChange, onTaskNameChange, onDueDate
      .then(res => res.json())
      .then(task => {
         const displayedTask = (<Task id={task.id} key={task.id} task={task.task} dueDate={task.due} onDelete={onDelete}/>)
-        onListChange(displayedTask)
+        onNewTask(displayedTask)
      })
   }
     

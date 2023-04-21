@@ -4,12 +4,16 @@ import TaskForm from "./TaskForm";
 import TaskList from "./TaskList";
 
 function App() {
-  const [list, setList] = useState('')
+  const [list, setList] = useState([])
   const [taskName, setTaskName] = useState('')
   const [dueDate, setDueDate] = useState('')
 
   function handleListChange(newTask) {
     setList(newTask)
+  }
+
+  function handleNewTask(newTask) {
+    setList([...list, newTask])
   }
 
   function handleTaskNameChange(event) {
@@ -33,12 +37,11 @@ function App() {
     .then(() => filterList(id))
   }
 
-
   return (
     <div>
       <NavBar />
       <br></br>
-      <TaskForm taskName={taskName} dueDate={dueDate}  onListChange={handleListChange} onTaskNameChange={handleTaskNameChange} onDueDateChange={handleDueDateChange} onDelete={handleDelete}/>
+      <TaskForm taskName={taskName} dueDate={dueDate} onNewTask={handleNewTask} onTaskNameChange={handleTaskNameChange} onDueDateChange={handleDueDateChange} onDelete={handleDelete}/>
       <TaskList list={list} onListChange={handleListChange} onDelete={handleDelete}/>
     </div>
   )
