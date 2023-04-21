@@ -1,10 +1,12 @@
 import React from "react";
 
-function Task({ task, dueDate }) {
+function Task({ id, task, dueDate, onDelete }) {
+
+    
     return (
         <div>
             <h3>{task} Due: {dueDate}</h3>
-            <button>x</button>
+            <button onClick={() => onDelete(id)}>x</button>
         </div>
     )
 }

@@ -20,12 +20,25 @@ function App() {
     setDueDate(event.target.value)
   }
 
+  function filterList(id) {
+    const filteredList = list.filter((task) => task.props.id !== id)
+    setList(filteredList)
+  }
+
+  function handleDelete(id) {
+    fetch(`http://localhost:3000/tasks/${id}`, {
+      method: 'DELETE'
+    })
+    .then(res => res.json())
+    .then(() => filterList(id))
+  }
+
   return (
     <div>
       <NavBar />
       <br></br>
-      <TaskForm taskName={taskName} dueDate={dueDate}  onListChange={handleListChange} onTaskNameChange={handleTaskNameChange} onDueDateChange={handleDueDateChange}/>
-      <TaskList list={list} onListChange={handleListChange}/>
+      <TaskForm taskName={taskName} dueDate={dueDate}  onListChange={handleListChange} onTaskNameChange={handleTaskNameChange} onDueDateChange={handleDueDateChange} onDelete={handleDelete}/>
+      <TaskList list={list} onListChange={handleListChange} onDelete={handleDelete}/>
     </div>
   )
 }

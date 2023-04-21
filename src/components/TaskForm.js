@@ -1,7 +1,7 @@
 import React from "react";
 import Task from "./Task";
 
-function TaskForm({ taskName, dueDate, onListChange, onTaskNameChange, onDueDateChange }) {
+function TaskForm({ taskName, dueDate, onListChange, onTaskNameChange, onDueDateChange, onDelete }) {
     
   const newTask = {
    task: taskName,
@@ -19,8 +19,9 @@ function TaskForm({ taskName, dueDate, onListChange, onTaskNameChange, onDueDate
     fetch('http://localhost:3000/tasks', postedTaskObj)
      .then(res => res.json())
      .then(task => {
+        console.log(task)
         const displayTask = Object.values(task).map(() => {
-            return (<Task key={task[2]} task={task[0]} dueDate={task[1]}/>)
+            return (<Task id={task[3]} key={task[2]} task={task[0]} dueDate={task[1]} onDelete={onDelete}/>)
         })
         onListChange(displayTask)
      })
