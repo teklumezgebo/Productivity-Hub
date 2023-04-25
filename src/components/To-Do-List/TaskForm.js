@@ -1,7 +1,7 @@
 import React from "react";
 import Task from "./Task";
 
-function TaskForm({ taskName, dueDate, onNewTask, onTaskNameChange, onDueDateChange, onDelete }) {
+function TaskForm({ taskName, dueDate, onNewTask, onTaskNameChange, onDueDateChange, onDelete, setDueDate, setTaskName }) {
     
   const newTask = {
    task: taskName,
@@ -28,6 +28,8 @@ function TaskForm({ taskName, dueDate, onNewTask, onTaskNameChange, onDueDateCha
             />)
         onNewTask(displayedTask)
      })
+    setDueDate('')
+    setTaskName('')
   }
     
   return (

@@ -105,7 +105,7 @@ function App() {
           <Home />
         </Route>
         <Route path='/to-do-list'>
-          <TaskForm taskName={taskName} dueDate={dueDate} onNewTask={handleNewTask} onTaskNameChange={handleTaskNameChange} onDueDateChange={handleDueDateChange} onDelete={handleDelete}/>
+          <TaskForm taskName={taskName} dueDate={dueDate} onNewTask={handleNewTask} onTaskNameChange={handleTaskNameChange} onDueDateChange={handleDueDateChange} onDelete={handleDelete} setDueDate={setDueDate} setTaskName={setTaskName}/>
           <TaskList list={list} onListChange={handleListChange} onDelete={handleDelete}/>
         </Route>
         <Route path='/journal'>
