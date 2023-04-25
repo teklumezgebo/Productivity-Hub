@@ -6,6 +6,7 @@ import Task from './To-Do-List/Task';
 import JournalForm from './Journals/JournalForm'
 import JournalList from './Journals/JournalList'
 import Journal from './Journals/Journal';
+import { Route, Switch } from 'react-router-dom'
 
 function App() {
   const [list, setList] = useState([])
@@ -97,13 +98,16 @@ function App() {
   return (
     <div>
       <NavBar />
-      <br></br>
-      <TaskForm taskName={taskName} dueDate={dueDate} onNewTask={handleNewTask} onTaskNameChange={handleTaskNameChange} onDueDateChange={handleDueDateChange} onDelete={handleDelete}/>
-      <TaskList list={list} onListChange={handleListChange} onDelete={handleDelete}/>
-      <br></br>
-      <JournalForm onEntryChange={handleEntry} entry={entry} onNewEntry={handleNewEntry} setEntry={setEntry} onJournalDelete={handleJournalDelete}/>
-      <JournalList journalList={journalList} onJournalChange={handleJournalChange} onJournalDelete={handleJournalDelete}/>
-      <br></br>
+      <Switch>
+        <Route path='/to-do-list'>
+          <TaskForm taskName={taskName} dueDate={dueDate} onNewTask={handleNewTask} onTaskNameChange={handleTaskNameChange} onDueDateChange={handleDueDateChange} onDelete={handleDelete}/>
+          <TaskList list={list} onListChange={handleListChange} onDelete={handleDelete}/>
+        </Route>
+        <Route path='/journal'>
+          <JournalForm onEntryChange={handleEntry} entry={entry} onNewEntry={handleNewEntry} setEntry={setEntry} onJournalDelete={handleJournalDelete}/>
+          <JournalList journalList={journalList} onJournalChange={handleJournalChange} onJournalDelete={handleJournalDelete}/>
+        </Route>
+      </Switch>
     </div>
   )
 }
