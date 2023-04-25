@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import NavBar from "./NavBar";
+import Home from './Home';
 import TaskForm from "./To-Do-List/TaskForm";
 import TaskList from "./To-Do-List/TaskList";
 import Task from './To-Do-List/Task';
@@ -100,6 +101,9 @@ function App() {
       <NavBar />
       <br></br>
       <Switch>
+        <Route exact path='/'>
+          <Home />
+        </Route>
         <Route path='/to-do-list'>
           <TaskForm taskName={taskName} dueDate={dueDate} onNewTask={handleNewTask} onTaskNameChange={handleTaskNameChange} onDueDateChange={handleDueDateChange} onDelete={handleDelete}/>
           <TaskList list={list} onListChange={handleListChange} onDelete={handleDelete}/>
