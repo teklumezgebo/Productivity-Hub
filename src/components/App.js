@@ -11,6 +11,7 @@ function App() {
   const [taskName, setTaskName] = useState('')
   const [dueDate, setDueDate] = useState('')
   const [journalList, setJournalList] = useState([])
+  const [entry, setEntry] = useState('')
 
   function handleListChange(newTask) {
     setList(newTask)
@@ -30,6 +31,14 @@ function App() {
 
   function handleDueDateChange(event) {
     setDueDate(event.target.value)
+  }
+
+  function handleEntry(event) {
+    setEntry(event.target.value)
+  }
+
+  function handleNewEntry(newEntry) {
+    setJournalList([...journalList, newEntry])
   }
 
   function filterList(id) {
@@ -66,7 +75,7 @@ function App() {
       <TaskForm taskName={taskName} dueDate={dueDate} onNewTask={handleNewTask} onTaskNameChange={handleTaskNameChange} onDueDateChange={handleDueDateChange} onDelete={handleDelete}/>
       <TaskList list={list} onListChange={handleListChange} onDelete={handleDelete}/>
       <br></br>
-      <JournalForm />
+      <JournalForm onEntryChange={handleEntry} entry={entry} onNewEntry={handleNewEntry} setEntry={setEntry}/>
       <JournalList journalList={journalList} onJournalChange={handleJournalChange}/>
     </div>
   )
