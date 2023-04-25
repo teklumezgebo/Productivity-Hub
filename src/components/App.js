@@ -98,6 +98,7 @@ function App() {
   return (
     <div>
       <NavBar />
+      <br></br>
       <Switch>
         <Route path='/to-do-list'>
           <TaskForm taskName={taskName} dueDate={dueDate} onNewTask={handleNewTask} onTaskNameChange={handleTaskNameChange} onDueDateChange={handleDueDateChange} onDelete={handleDelete}/>
