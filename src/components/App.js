@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import NavBar from "./NavBar";
-import TaskForm from "./TaskForm";
-import TaskList from "./TaskList";
-import Task from './Task';
+import TaskForm from "./To-Do-List/TaskForm";
+import TaskList from "./To-Do-List/TaskList";
+import Task from './To-Do-List/Task';
+import JournalForm from './Journals/JournalForm'
+import JournalList from './Journals/JournalList'
 
 function App() {
   const [list, setList] = useState([])
@@ -58,6 +60,9 @@ function App() {
       <br></br>
       <TaskForm taskName={taskName} dueDate={dueDate} onNewTask={handleNewTask} onTaskNameChange={handleTaskNameChange} onDueDateChange={handleDueDateChange} onDelete={handleDelete}/>
       <TaskList list={list} onListChange={handleListChange} onDelete={handleDelete}/>
+      <br></br>
+      <JournalForm />
+      <JournalList />
     </div>
   )
 }

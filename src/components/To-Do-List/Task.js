@@ -1,8 +1,6 @@
 import React from "react";
 
 function Task({ id, task, dueDate, onDelete }) {
-
-    
     return (
         <div>
             <h3>{task} Due: {dueDate}</h3>
