@@ -10,9 +10,14 @@ function App() {
   const [list, setList] = useState([])
   const [taskName, setTaskName] = useState('')
   const [dueDate, setDueDate] = useState('')
+  const [journalList, setJournalList] = useState([])
 
   function handleListChange(newTask) {
     setList(newTask)
+  }
+
+  function handleJournalChange(newJournal) {
+    setJournalList(newJournal)
   }
 
   function handleNewTask(newTask) {
@@ -62,7 +67,7 @@ function App() {
       <TaskList list={list} onListChange={handleListChange} onDelete={handleDelete}/>
       <br></br>
       <JournalForm />
-      <JournalList />
+      <JournalList journalList={journalList} onJournalChange={handleJournalChange}/>
     </div>
   )
 }
