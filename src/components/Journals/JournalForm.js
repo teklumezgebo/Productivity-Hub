@@ -1,7 +1,7 @@
 import React from "react";
 import Journal from "./Journal";
 
-function JournalForm({ onEntryChange, entry, onNewEntry, setEntry }) {
+function JournalForm({ onEntryChange, entry, onNewEntry, setEntry, onJournalDelete }) {
     
     const newEntry = {
         passage: entry
@@ -20,8 +20,10 @@ function JournalForm({ onEntryChange, entry, onNewEntry, setEntry }) {
         .then(res => res.json())
         .then(entry => {
             const displayEntry = (<Journal
+            id={entry.id}
             key={entry.id}
             passage={entry.passage}
+            onJournalDelete={onJournalDelete}
             />)
             onNewEntry(displayEntry)
         })

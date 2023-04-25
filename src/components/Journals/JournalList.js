@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Journal from "./Journal";
 
-function JournalList({ journalList, onJournalChange }) {
+function JournalList({ journalList, onJournalChange, onJournalDelete }) {
 
     useEffect(() => {
         fetch('http://localhost:3000/entries')
@@ -11,7 +11,8 @@ function JournalList({ journalList, onJournalChange }) {
                 return <Journal 
                 key={journal.id} 
                 id={journal.id} 
-                passage={journal.passage} 
+                passage={journal.passage}
+                onJournalDelete={onJournalDelete} 
                 />
             })
             onJournalChange(diplayJournals)

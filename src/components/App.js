@@ -5,6 +5,7 @@ import TaskList from "./To-Do-List/TaskList";
 import Task from './To-Do-List/Task';
 import JournalForm from './Journals/JournalForm'
 import JournalList from './Journals/JournalList'
+import Journal from './Journals/Journal';
 
 function App() {
   const [list, setList] = useState([])
@@ -41,6 +42,14 @@ function App() {
     setJournalList([...journalList, newEntry])
   }
 
+  function handleDelete(id) {
+    fetch(`http://localhost:3000/tasks/${id}`, {
+      method: 'DELETE'
+    })
+    .then(res => res.json())
+    .then(() => filterList(id))
+  }
+
   function filterList(id) {
     fetch('http://localhost:3000/tasks')
     .then(res => res.json())
@@ -60,12 +69,29 @@ function App() {
 
   }
 
-  function handleDelete(id) {
-    fetch(`http://localhost:3000/tasks/${id}`, {
+  function handleJournalDelete(id) {
+    fetch(`http://localhost:3000/entries/${id}`,{
       method: 'DELETE'
     })
     .then(res => res.json())
-    .then(() => filterList(id))
+    .then(() => filterJournals())
+  }
+
+  function filterJournals(id) {
+    fetch('http://localhost:3000/entries')
+    .then(res => res.json())
+    .then(journals => {
+      const filteredJournal = journals.filter((journal) => journal.id !== id)
+      const displayFitleredJournal = filteredJournal.map((journal) => {
+        return (<Journal
+          key={journal.id}
+          id={journal.id}
+          passage={journal.passage}
+          onJournalDelete={handleJournalDelete}
+        />)
+      })
+      setJournalList(displayFitleredJournal)
+    })
   }
 
   return (
@@ -75,8 +101,9 @@ function App() {
       <TaskForm taskName={taskName} dueDate={dueDate} onNewTask={handleNewTask} onTaskNameChange={handleTaskNameChange} onDueDateChange={handleDueDateChange} onDelete={handleDelete}/>
       <TaskList list={list} onListChange={handleListChange} onDelete={handleDelete}/>
       <br></br>
-      <JournalForm onEntryChange={handleEntry} entry={entry} onNewEntry={handleNewEntry} setEntry={setEntry}/>
-      <JournalList journalList={journalList} onJournalChange={handleJournalChange}/>
+      <JournalForm onEntryChange={handleEntry} entry={entry} onNewEntry={handleNewEntry} setEntry={setEntry} onJournalDelete={handleJournalDelete}/>
+      <JournalList journalList={journalList} onJournalChange={handleJournalChange} onJournalDelete={handleJournalDelete}/>
+      <br></br>
     </div>
   )
 }

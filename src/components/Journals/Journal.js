@@ -1,8 +1,11 @@
 import React from "react";
 
-function Journal({ id, passage }) {
+function Journal({ id, passage, onJournalDelete }) {
     return(
-        <p id={id}>{passage}</p>
+        <div>
+            <p id={id}>{passage}</p>
+            <button onClick={() => onJournalDelete(id)}>x</button>
+        </div>
     )
 }
 
