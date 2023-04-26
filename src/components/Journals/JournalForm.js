@@ -31,7 +31,7 @@ function JournalForm({ onEntryChange, entry, onNewEntry, setEntry, onJournalDele
     }
     
     return(
-        <div>
+        <div className="journal-form">
             <textarea rows="2" cols="25" placeholder="How are you feeling..." onChange={onEntryChange} value={entry}></textarea>
             <button onClick={handleJournalSubmit}>Post</button>
         </div>
