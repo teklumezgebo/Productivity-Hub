@@ -1,10 +1,4 @@
 {
-  "tasks": [
-    {
-      "task": "Write code",
-      "due": "5/1/23",
-      "id": 1
-    }
-  ],
+  "tasks": [],
   "entries": []
 }
