@@ -16,7 +16,6 @@
     color: #333;
     font-size: 18px;
     padding: 7px;
-    
 }
   
 .NavLink:hover {
@@ -48,4 +47,22 @@ border-radius: 1px;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.task button:hover {
+    background-color: #d32f2f;
+}
+  
+.task-form {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.task-form input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    width: 100%;
 }
