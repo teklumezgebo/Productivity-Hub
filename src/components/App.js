@@ -8,6 +8,7 @@ import JournalForm from './Journals/JournalForm'
 import JournalList from './Journals/JournalList'
 import Journal from './Journals/Journal';
 import { Route, Switch } from 'react-router-dom'
+import '../style.css'
 
 function App() {
   const [list, setList] = useState([])
