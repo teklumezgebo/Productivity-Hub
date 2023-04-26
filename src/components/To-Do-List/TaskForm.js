@@ -33,7 +33,7 @@ function TaskForm({ taskName, dueDate, onNewTask, onTaskNameChange, onDueDateCha
   }
     
   return (
-    <div>
+    <div className="task-form">
         <form onSubmit={handleFormSubmit}>
             <input name="task" type="text" placeholder="Write your task here..." onChange={onTaskNameChange} value={taskName}></input>
             <input name="due-by" type="text" placeholder="Due by..." onChange={onDueDateChange} value={dueDate}></input>

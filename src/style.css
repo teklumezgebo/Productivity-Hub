@@ -24,3 +24,15 @@ color: #666;
 background-color: #eee;
 border-radius: 1px;
 }
+
+.task {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+
